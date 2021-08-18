@@ -48,17 +48,23 @@ Without Attributes:
 
 
 ## Note
-1. ~If the weight is not automatically downloaded, please try manual downloading~:
-   ```
-   wget --no-check-certificate https://nlp1.cs.unc.edu/models/faster_rcnn_from_caffe_attr.pkl -P ~/.torch/fvcore_cache/models/
-   wget --no-check-certificate https://nlp1.cs.unc.edu/models/faster_rcnn_from_caffe.pkl -P ~/.torch/fvcore_cache/models/
-   ```
-   These backup links no longer work any more. Please directly contact me if there is any issue.
-2. The default weight is same to the 'alternative pretrained model' in the original github [here](https://github.com/peteanderson80/bottom-up-attention#demo), which is trained with 36 bbxes. If you want to use the original detetion trained with 10~100 bbxes, please use the following weight:
+1. The default weight is same to the 'alternative pretrained model' in the original github [here](https://github.com/peteanderson80/bottom-up-attention#demo), which is trained with 36 bbxes. If you want to use the original detetion trained with 10~100 bbxes, please use the following weight:
    ```
    http://nlp.cs.unc.edu/models/faster_rcnn_from_caffe_attr_original.pkl
    ```
-
+2. The coordinate generated from the code is (x_left_corner, y_top_corner, x_right_corner, y_bottom_corner). Here is a visualization. Suppose the `box = [x0, y0, x1, y1]`, it annotates an RoI of:
+   ```
+   0-------------------------------------
+    |                                   |
+    y0 box[1]   |-----------|           |
+    |           |           |           |
+    |           |  Object   |           |
+    y1 box[3]   |-----------|           |
+    |                                   |
+   H----------x0 box[0]-----x1 box[2]----
+    0                                   W
+   ```
+3. If the link breaks, please contact me (at airsplay@cs.unc.edu) directly and I will share you the weight.
 
 ## External Links
 1. The orignal CAFFE implementation [https://github.com/peteanderson80/bottom-up-attention](https://github.com/peteanderson80/bottom-up-attention), and its [docker image](https://hub.docker.com/r/airsplay/bottom-up-attention).
